@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost:27017/jtwenl', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/jtwenl', {useNewUrlParser: true, useUnifiedTopology: true});
 
 /**@module Review */
 
@@ -14,6 +14,7 @@ const ReviewSchema = {
     likes: { type: Number, required: true, },
     body: { type: String, required: true, },
     stars: { type: Number, required: true, },
+    thumbnail: { type: String },
     recommend: { type: Boolean, required: true, },
     product: { type: Schema.Types.ObjectId, ref: 'Product'},
     metrics: {
