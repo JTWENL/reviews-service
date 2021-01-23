@@ -1,20 +1,17 @@
-const express = require('express');
-const process = require('process');
-const { join } = require('path');
-const axios = require('axios');
-const bodyParser = require('body-parser');
-const cors = require('cors');
+import express from 'express';
+import process from 'process';
+import { join } from 'path';
+import axios from 'axios';
+import bodyParser from 'body-parser';
 
-const Review = require('./db/Review.js');
-// import {mkUUID}
-const {reviewsHandler} = require('./endpoints');
+import Review from './db/Review.js';
+import {reviewsHandler} from './endpoints';
 
 
 // eslint-disable-next-line @babel/new-cap
 const app = new express();
 const PORT = process.env.PORT || 8081;
 
-app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
