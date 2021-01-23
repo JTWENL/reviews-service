@@ -15,11 +15,10 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.s[ac]ss$/,
+        test: /\.css$/,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },
-          { loader: 'sass-loader' },
         ],
       },
     ],
