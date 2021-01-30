@@ -1,7 +1,18 @@
 import mongoose from 'mongoose';
+import process, { exit } from 'process';
 mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost:27017/jtwenl', {useNewUrlParser: true, useUnifiedTopology: true});
+const mkMongo = (user, pass, cluster) => (
+  `mongodb+srv://${user}:${pass}@saikocluster.bgwfn.mongodb.net/jtwenl?authSource=admin&retryWrites=true&w=majority`
+);
+
+const [MONGOUSER, MONGOPASS] = ['MONGOUSER','MONGOPASS'].map(k => process.env[k]);
+console.log(MONGOPASS, MONGOUSER);
+
+const mongourl = (MONGOUSER && MONGOPASS ? mkMongo(MONGOUSER, MONGOPASS) : 'mongodb://localhost:27017/jtwenl');
+console.log(mongourl);
+
+mongoose.connect(mongourl, {useNewUrlParser: true, useUnifiedTopology: true});
 
 /**@module Review */
 
