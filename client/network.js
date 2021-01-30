@@ -1,7 +1,7 @@
-import axios, {create} from 'axios';
-import process from 'process';
+import {create} from 'axios';
 
-const serverUrl = process.env.SERVER_URL ?? 'http://127.0.0.1:8081';
+// hardcoding for now since location.origin doesn't work
+const serverUrl = 'http://52.13.103.43';
 
 const reviewsConn = create({
     baseURL: serverUrl
