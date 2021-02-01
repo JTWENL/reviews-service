@@ -7,26 +7,28 @@ const ReviewsModal = ({reviews}) => {
   let [show, setShow] = useState(false);
   let toggle = () => setShow(!show);
   return (
-    <div onClick={toggle} className='reviews-button' >
-    MODAL
-    <div onClick={toggle} className='reviews-modal-container'>
-      {show ? (<Modal
+    <div className='reviews-button' >
+      <div onClick={toggle} >MODAL</div>
+      {show ? 
+      (<div className='reviews-modal-container'>
+        <Modal
         element=<ReviewList key={'rl-' + reviews.length} reviews={reviews} />
         closer={toggle}
         opacity={0.8}
-    />) : null}
-    </div>
+      />
+    </div>)
+      : null}
     </div>
   );
 };
 
 // to access divs from another service 
 const makeReviewsModal = (reviews, target) => {
-  let element = (<ReviewsModal reviews={reviews}/>);
+  let element = (<ReviewsModal reviews={reviews} />);
   ReactDOM.render(element, document.getElementById(target));
 };
 
 export default ReviewsModal;
 
 // to access other elements
-export {makeReviewsModal};
+export { makeReviewsModal };

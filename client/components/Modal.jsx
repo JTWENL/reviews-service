@@ -3,17 +3,12 @@ import PropTypes from 'prop-types';
 
 const Modal = ({closer, element, className, opacity}) => {
 
-
-  let modalBGstyle = {
-    minWidth: '1px',
-    height: 'auto',
-    width: 'auto'
-  };
-
   return (
     <div className={className}>
-      <div style={modalBGstyle} className='modal-background'></div>
-      {element}
+      <div onClick={closer} className='modal-background'></div>
+      <div className={className+'-inner-container'} >
+        {element}
+      </div>
     </div>
   );
 };

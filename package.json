@@ -11,7 +11,7 @@
     "build": "webpack -c ./webpack.config.js --mode production",
     "build-dev": "webpack -c ./webpack.config.js --mode production -d eval-source-map",
     "build-server": "babel server/index.js --out-file index-compiled.js",
-    "server": "nodemon --exec babel-node server/index.js",
+    "server": "nodemon --exec babel-node dist/server/index.js",
     "seed": "babel-node server/db/Seed.js",
     "start": "./start.sh",
     "test": "jest"

@@ -88,11 +88,10 @@ body {
 }
 
 .review-list {
-  padding: 40px 0;
   background-color: white;
   
   .review-list-item {
-    @extend .review-list;
+    // @extend .review-list;
     @include greyborder;
     .review-list-item-header {
       @include even-flex-row();
@@ -101,6 +100,10 @@ body {
       .stars {
         font-size: 20px;
       }
+    }
+    padding: {
+      top: 2rem;
+      bottom: 2rem;
     }
 
   }
@@ -215,14 +218,39 @@ body {
 
 .modal-popup {
   display: flex;
-  @include even-flex-row();
-  justify-content: space-between;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  height: 100%;
+  margin-right: 3rem;
 
-}
-  
-.modal-background {
-  opacity: 80%;
-  width: 60%;
+  .modal-background {
+    // flex: 0 0 60%;
+    // opacity: 80%;
+    background-color: rgba(0,0,0,.15);
+    width: 60%;
+  }
+  .modal-popup-inner-container {
+    position: relative;
+    flex: 1 0 30rem;
+    .review-list {
+      // width: 30rem;
+      min-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      padding: 40px 1.25rem 50px;
+    }
+  }
+    // justify-content: space-between;
+
 }
 .reviews-modal-container {
   background-color: '#0a0a0a';
@@ -232,5 +260,5 @@ body {
   top: 0px;
   left: 0px;
   right: 0px;
-  z-index: 1000
+  z-index: 1000;
 }

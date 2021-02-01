@@ -20,7 +20,7 @@ class ReviewComponent extends React.Component {
     this.getReviews()
       .then(reviews => {
         this.setState({ reviews });
-        // makeReviewsModal(reviews, 'reviews-button');
+        makeReviewsModal(reviews, 'reviews-button');
       });
   }
 
