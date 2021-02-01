@@ -89,6 +89,7 @@ body {
 
 .review-list {
   padding: 40px 0;
+  background-color: white;
   
   .review-list-item {
     @extend .review-list;
@@ -210,4 +211,26 @@ body {
   font-weight: 100;  
   font-size: 0.9rem;
   color: darkgrey;
+}
+
+.modal-popup {
+  display: flex;
+  @include even-flex-row();
+  justify-content: space-between;
+
+}
+  
+.modal-background {
+  opacity: 80%;
+  width: 60%;
+}
+.reviews-modal-container {
+  background-color: '#0a0a0a';
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1000
 }

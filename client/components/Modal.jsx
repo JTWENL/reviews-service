@@ -2,20 +2,17 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 const Modal = ({closer, element, className, opacity}) => {
-  let style = {
-    opacity,
-    backgroundColor: '#0a0a0a',
-    position: 'fixed',
-    height: '100vh',
-    width: '100vw',
-    top: '0px',
-    left: '0px',
-    right: '0px',
-    zIndex: 1000
+
+
+  let modalBGstyle = {
+    minWidth: '1px',
+    height: 'auto',
+    width: 'auto'
   };
 
   return (
-    <div onClick={closer} className={className}>
+    <div className={className}>
+      <div style={modalBGstyle} className='modal-background'></div>
       {element}
     </div>
   );

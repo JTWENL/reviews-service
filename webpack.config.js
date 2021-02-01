@@ -14,6 +14,11 @@ module.exports = {
     react: 'React',
     'react-dom': 'ReactDOM'
   },
+  resolve: {
+    fallback: {
+      'fs': false
+    }
+  },
   output: {
     path: path.resolve(__dirname, 'dist/client'),
     filename: 'bundle.js',

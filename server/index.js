@@ -4,6 +4,7 @@ const { join } = require('path');
 const axios = require('axios');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const expressStaticGzip = require('express-static-gzip');
 
 const Review = require('./db/Review.js');
 // import {mkUUID}
@@ -22,7 +23,11 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(join(__dirname, '..', 'client')));
+// app.use(express.static(join(__dirname, '..', 'client')));
+app.use('/', expressStaticGzip(join(__dirname, '..', 'client'), {
+  enableBrotli: true,
+  orderPreference: ['br', 'gz']
+}));
 
 let log = (data) => {
   console.log(data);
