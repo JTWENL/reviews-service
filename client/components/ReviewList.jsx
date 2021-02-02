@@ -32,19 +32,25 @@ class ReviewList extends React.Component {
     this.onFlip = this.onFlip.bind(this);
     this.state = {
       reviews,
-      sortAsc: true
+      sortAsc: true,
+      sortCriteria: 'stars'
     };
   }
 
   onChange(ev) {
     ev.preventDefault();
-    this.setState((st) => ({
-      reviews: sortReviewsBy(ev.target.value, st.reviews)
-    }));
+    this.shuffleReviews(ev.target.value);
   }
 
   onFlip(sortAsc) {
-    this.setState({sortAsc});
+    this.shuffleReviews(this.state.value, sortAsc);  
+  }
+
+  shuffleReviews(value = 'stars', sortAsc = this.state.sortAsc) {
+    this.setState((st) => ({
+      reviews: sortReviewsBy(value, st.reviews, sortAsc),
+      sortCriteria: value
+    }));
   }
 
   render() {

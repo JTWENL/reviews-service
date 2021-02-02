@@ -8,7 +8,10 @@ const ReviewsModal = ({reviews}) => {
   let toggle = () => setShow(!show);
   return (
     <div className='reviews-button' >
-      <div onClick={toggle} >MODAL</div>
+      <div id='nested-button' onClick={toggle}>
+      
+      <div >Reviews</div>
+      </div>
       {show ? 
       (<div className='reviews-modal-container'>
         <Modal
@@ -25,7 +28,8 @@ const ReviewsModal = ({reviews}) => {
 // to access divs from another service 
 const makeReviewsModal = (reviews, target) => {
   let element = (<ReviewsModal reviews={reviews} />);
-  ReactDOM.render(element, document.getElementById(target));
+  let targElems = document.querySelectorAll(`div[name=${target}]`);
+  [...targElems].forEach(t => ReactDOM.render(element, t));
 };
 
 export default ReviewsModal;

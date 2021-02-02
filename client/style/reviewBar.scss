@@ -5,7 +5,6 @@
   padding: 0;
 }
 
-
 @mixin even-flex-row {
   display: flex;
   flex-flow: row wrap;
@@ -261,4 +260,33 @@ body {
   left: 0px;
   right: 0px;
   z-index: 1000;
+}
+
+.review-sorter {
+  @include even-flex-row();
+  width: 33%;
+  float: left;
+
+  .directional {
+    cursor: pointer;
+  }
+}
+
+.reviews-button {
+  line-height: 1.57143;
+  min-height: 5.625rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  #nested-button {
+    display: inline-block;
+    margin: auto 0;
+    cursor: pointer;
+    font-size: .875rem;
+    font-weight: 700;
+    color: #111;
+  }
+  // & {
+  
+  // }
 }
