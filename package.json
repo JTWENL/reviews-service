@@ -9,8 +9,9 @@
   "scripts": {
     "watch": "webpack -c ./webpack.config.js -w",
     "build": "webpack -c ./webpack.config.js --mode production",
+    "build-dev": "webpack -c ./webpack.config.js --mode production -d eval-source-map",
     "build-server": "babel server/index.js --out-file index-compiled.js",
-    "server": "nodemon --exec babel-node server/index.js",
+    "server": "nodemon --exec babel-node dist/server/index.js",
     "seed": "babel-node server/db/Seed.js",
     "start": "./start.sh",
     "test": "jest"
@@ -43,6 +44,9 @@
     "@typescript-eslint/parser": "^4.13.0",
     "babel-eslint": "^11.0.0-beta.1",
     "babel-loader": "^8.2.2",
+    "brotli-webpack-plugin": "^1.1.0",
+    "compression-webpack-plugin": "^7.1.2",
+    "console-browserify": "^1.2.0",
     "css-loader": "^5.0.1",
     "eslint": "^7.17.0",
     "eslint-config-airbnb": "^18.2.1",
@@ -52,8 +56,10 @@
     "eslint-plugin-react": "^7.22.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-react": "0.0.4",
+    "express-static-gzip": "^2.1.1",
     "fast-check": "^2.11.0",
     "jsdoc-http-plugin": "^0.3.2",
+    "lodash-webpack-plugin": "^0.11.6",
     "nodemon": "^2.0.7",
     "react-dom": "^17.0.1",
     "sass": "^1.32.5",
@@ -80,6 +86,7 @@
     "mongoose": "^5.11.11",
     "node-polyfill-webpack-plugin": "^1.0.2",
     "prop-types": "^15.7.2",
+    "ramda": "^0.27.1",
     "react": "^17.0.1"
   }
 }

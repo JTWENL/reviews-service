@@ -5,7 +5,6 @@
   padding: 0;
 }
 
-
 @mixin even-flex-row {
   display: flex;
   flex-flow: row wrap;
@@ -99,10 +98,10 @@ body {
 }
 
 .review-list {
-  padding: 40px 0;
+  background-color: white;
   
   .review-list-item {
-    @extend .review-list;
+    // @extend .review-list;
     @include greyborder;
     .review-list-item-header {
       @include even-flex-row();
@@ -111,6 +110,10 @@ body {
       .stars {
         font-size: 20px;
       }
+    }
+    padding: {
+      top: 2rem;
+      bottom: 2rem;
     }
 
   }
@@ -221,4 +224,80 @@ body {
   font-weight: 100;  
   font-size: 0.9rem;
   color: darkgrey;
+}
+
+.modal-popup {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  height: 100%;
+  margin-right: 3rem;
+
+  .modal-background {
+    // flex: 0 0 60%;
+    // opacity: 80%;
+    background-color: rgba(0,0,0,.15);
+    width: 60%;
+  }
+  .modal-popup-inner-container {
+    position: relative;
+    flex: 1 0 30rem;
+    .review-list {
+      // width: 30rem;
+      min-width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      padding: 40px 1.25rem 50px;
+    }
+  }
+    // justify-content: space-between;
+
+}
+.reviews-modal-container {
+  background-color: '#0a0a0a';
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  z-index: 1000;
+}
+
+.review-sorter {
+  @include even-flex-row();
+  width: 33%;
+  float: left;
+
+  .directional {
+    cursor: pointer;
+  }
+}
+
+.reviews-button {
+  line-height: 1.57143;
+  min-height: 5.625rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  #nested-button {
+    display: inline-block;
+    margin: auto 0;
+    cursor: pointer;
+    font-size: .875rem;
+    font-weight: 700;
+    color: #111;
+  }
+  // & {
+  
+  // }
 }

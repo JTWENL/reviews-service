@@ -2,6 +2,7 @@
  * @module {renderHelpers}
  * Pure functions for use in aggregating and rendering reviews.
  */
+ import {view, lensPath, reverse, identity, sortBy, pipe} from 'ramda';
 
 /**
  * 
@@ -118,6 +119,11 @@ const monthYear = (dateStr) => {
  */
 const fmtStar = (n) => '★'.repeat(n) + '☆'.repeat(5 - n);
 
+const sortReviewsBy = (attr, reviews, rev, f = rev ? reverse : identity, path = (attr === 'stars' ? [] : ['metrics'])) => {
+  // debugger;
+  return (reviews |> sortBy(attr |> path.concat(#) |> lensPath |> view)(#) |> f);
+};
+
 export { fmtStar
        , aggregate
        , collect
@@ -126,4 +132,5 @@ export { fmtStar
        , cast
        , prettyDate
        , monthYear
+       , sortReviewsBy
        };

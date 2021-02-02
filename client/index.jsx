@@ -5,6 +5,7 @@ import getReviews from './network.js';
 import ReviewList from './components/ReviewList.jsx';
 import ReviewTable from './components/ReviewTable.jsx';
 import Modal from './components/Modal.jsx';
+import {makeReviewsModal} from './components/ReviewsModal.jsx';
 import './style/reviewBar.scss';
 
 class ReviewComponent extends React.Component {
@@ -12,24 +13,19 @@ class ReviewComponent extends React.Component {
     super(props);
     let { getReviews } = props;
     this.getReviews = getReviews;
-    this.state = { showModal: false };
+    this.state = {};
   }
 
   componentDidMount() {
     this.getReviews()
       .then(reviews => {
-        console.log(reviews[~~(Math.random() * reviews.length)]);
         this.setState({ reviews });
-        console.log(this.state);
+        makeReviewsModal(reviews, 'reviews-button');
       });
   }
 
   render() {
-    let { reviews, showModal } = this.state;
-    let toggle = (ev) => {
-      ev.preventDefault();
-      this.setState({showModal: true});
-    };
+    let { reviews } = this.state;
     let content = () => (
       <>
         <div className="reviews-title">
@@ -37,15 +33,7 @@ class ReviewComponent extends React.Component {
           <span>{'  (' + this.state.reviews.length + ')'}</span>
         </div>
         <ReviewTable key={'rt-' + reviews.length} reviews={reviews} />
-        {showModal
-          ? (
-        <Modal
-          element=<ReviewList key={'rl-' + reviews.length} reviews={reviews} />
-          closer={() => { }}
-          opacity={0.8}
-          />
-        ) : null}
-        {/* TODO add the modal back in*/}
+                {/* TODO add the modal back in*/}
         {/* <div onClick={toggle}>HHAAAUUUNNGHH???</div> */}
         
       </>

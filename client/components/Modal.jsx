@@ -2,21 +2,13 @@ import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 
 const Modal = ({closer, element, className, opacity}) => {
-  let style = {
-    opacity,
-    backgroundColor: '#0a0a0a',
-    position: 'fixed',
-    height: '100vh',
-    width: '100vw',
-    top: '0px',
-    left: '0px',
-    right: '0px',
-    zIndex: 1000
-  };
 
   return (
-    <div onClick={closer} className={className}>
-      {element}
+    <div className={className}>
+      <div onClick={closer} className='modal-background'></div>
+      <div className={className+'-inner-container'} >
+        {element}
+      </div>
     </div>
   );
 };
